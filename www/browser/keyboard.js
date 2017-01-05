@@ -4,31 +4,31 @@ var argscheck = require('cordova/argscheck'),
     exec = require('cordova/exec');
 
 
-var Keyboard = function() {
+var IonicKeyboard = function() {
 };
 
-Keyboard.hideKeyboardAccessoryBar = function(hide) {
+IonicKeyboard.hideKeyboardAccessoryBar = function(hide) {
     return null;
 };
 
-Keyboard.close = function() {
+IonicKeyboard.close = function() {
     return null;
 };
 
-Keyboard.show = function() {
+IonicKeyboard.show = function() {
     return null;
 };
 
-Keyboard.disableScroll = function(disable) {
+IonicKeyboard.disableScroll = function(disable) {
     return null;
 };
 
 /*
-Keyboard.styleDark = function(dark) {
- exec(null, null, "Keyboard", "styleDark", [dark]);
+IonicKeyboard.styleDark = function(dark) {
+ exec(null, null, "IonicKeyboard", "styleDark", [dark]);
 };
 */
 
-Keyboard.isVisible = false;
+IonicKeyboard.isVisible = false;
 
-module.exports = Keyboard;
+module.exports = IonicKeyboard;
