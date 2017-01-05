@@ -4,26 +4,26 @@ var argscheck = require('cordova/argscheck'),
     exec = require('cordova/exec');
 
 
-var Keyboard = function() {
+var IonicKeyboard = function() {
 };
 
-Keyboard.hideKeyboardAccessoryBar = function(hide) {
-    exec(null, null, "Keyboard", "hideKeyboardAccessoryBar", [hide]);
+IonicKeyboard.hideKeyboardAccessoryBar = function(hide) {
+    exec(null, null, "IonicKeyboard", "hideKeyboardAccessoryBar", [hide]);
 };
 
-Keyboard.close = function() {
-    exec(null, null, "Keyboard", "close", []);
+IonicKeyboard.close = function() {
+    exec(null, null, "IonicKeyboard", "close", []);
 };
 
-Keyboard.show = function() {
+IonicKeyboard.show = function() {
     console.warn('Showing keyboard not supported in iOS due to platform limitations.')
     console.warn('Instead, use input.focus(), and ensure that you have the following setting in your config.xml: \n');
     console.warn('    <preference name="KeyboardDisplayRequiresUserAction" value="false"/>\n');
-    // exec(null, null, "Keyboard", "show", []);
+    // exec(null, null, "IonicKeyboard", "show", []);
 };
 
-Keyboard.disableScroll = function(disable) {
-    exec(null, null, "Keyboard", "disableScroll", [disable]);
+IonicKeyboard.disableScroll = function(disable) {
+    exec(null, null, "IonicKeyboard", "disableScroll", [disable]);
 };
 
 /*
@@ -32,9 +32,9 @@ Keyboard.styleDark = function(dark) {
 };
 */
 
-Keyboard.isVisible = false;
+IonicKeyboard.isVisible = false;
 
-module.exports = Keyboard;
+module.exports = IonicKeyboard;
 
 
 
