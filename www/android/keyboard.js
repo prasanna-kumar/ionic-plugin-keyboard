@@ -1,27 +1,29 @@
 
 var argscheck = require('cordova/argscheck'),
     utils = require('cordova/utils'),
-    exec = require('cordova/exec'),
-    channel = require('cordova/channel');
+    exec = require('cordova/exec');
 
 
-var Keyboard = function() {
+var IonicKeyboard = function() {
 };
 
-Keyboard.hideKeyboardAccessoryBar = function(hide) {
-    exec(null, null, "Keyboard", "hideKeyboardAccessoryBar", [hide]);
+IonicKeyboard.hideKeyboardAccessoryBar = function(hide) {
+    exec(null, null, "IonicKeyboard", "hideKeyboardAccessoryBar", [hide]);
 };
 
-Keyboard.close = function() {
-    exec(null, null, "Keyboard", "close", []);
+IonicKeyboard.close = function() {
+    exec(null, null, "IonicKeyboard", "close", []);
 };
 
-Keyboard.show = function() {
-    exec(null, null, "Keyboard", "show", []);
+IonicKeyboard.show = function() {
+    console.warn('Showing keyboard not supported in iOS due to platform limitations.')
+    console.warn('Instead, use input.focus(), and ensure that you have the following setting in your config.xml: \n');
+    console.warn('    <preference name="KeyboardDisplayRequiresUserAction" value="false"/>\n');
+    // exec(null, null, "IonicKeyboard", "show", []);
 };
 
-Keyboard.disableScroll = function(disable) {
-    exec(null, null, "Keyboard", "disableScroll", [disable]);
+IonicKeyboard.disableScroll = function(disable) {
+    exec(null, null, "IonicKeyboard", "disableScroll", [disable]);
 };
 
 /*
@@ -30,31 +32,9 @@ Keyboard.styleDark = function(dark) {
 };
 */
 
-Keyboard.isVisible = false;
+IonicKeyboard.isVisible = false;
 
-channel.onCordovaReady.subscribe(function() {
-    exec(success, null, 'Keyboard', 'init', []);
-
-    function success(msg) {
-        var action = msg.charAt(0);
-        if ( action === 'S' ) {
-            var keyboardHeight = msg.substr(1);
-            cordova.plugins.Keyboard.isVisible = true;
-            cordova.fireWindowEvent('native.keyboardshow', { 'keyboardHeight': + keyboardHeight });
-
-            //deprecated
-            cordova.fireWindowEvent('native.showkeyboard', { 'keyboardHeight': + keyboardHeight });
-        } else if ( action === 'H' ) {
-            cordova.plugins.Keyboard.isVisible = false;
-            cordova.fireWindowEvent('native.keyboardhide');
-
-            //deprecated
-            cordova.fireWindowEvent('native.hidekeyboard');
-        }
-    }
-});
-
-module.exports = Keyboard;
+module.exports = IonicKeyboard;
 
 
 
