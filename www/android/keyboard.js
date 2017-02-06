@@ -50,6 +50,8 @@ channel.onCordovaReady.subscribe(function() {
 
             //deprecated
             cordova.fireWindowEvent('native.hidekeyboard');
+        } else if(action === 'B') {
+           cordova.fireWindowEvent('back.button');
         }
     }
 });
